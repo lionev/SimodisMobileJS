@@ -21,6 +21,13 @@ const Home = ({navigation}) => {
           }}>
           <Text style={{fontSize: 20, color: '#FFF'}}>Ranking</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={home.buttonHome}
+          onPress={() => {
+            navigation.navigate('Questions');
+          }}>
+          <Text style={{fontSize: 20, color: '#FFF'}}>Atividades</Text>
+        </TouchableOpacity>
       </View>
       <View style={home.semicirculoBotton}></View>
     </View>

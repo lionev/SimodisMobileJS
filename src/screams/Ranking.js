@@ -10,14 +10,14 @@ const Ranking = ({navigation}) => {
       <TouchableOpacity
         style={rankingMain.button}
         onPress={() => {
-          navigation.navigate('Ranking');
+          navigation.navigate('RankingAll');
         }}>
         <Text style={rankingMain.text}>Ranking</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={rankingMain.button}
         onPress={() => {
-          navigation.navigate('Ranking');
+          navigation.navigate('RankingPattern');
         }}>
         <Text style={rankingMain.text}>Ranking Geral</Text>
       </TouchableOpacity>

@@ -6,6 +6,9 @@ import ListarProdutos from '../screams/ListarProdutos';
 import Home from '../screams/Home';
 import Perfil from '../screams/Perfil';
 import Ranking from '../screams/Ranking';
+import RankingAll from '../screams/RankingAll';
+import RankingPattern from '../screams/RankingPattern';
+import Questions from '../screams/Questions';
 
 const MainNavigator = createStackNavigator(
   {
@@ -30,6 +33,15 @@ const MainNavigator = createStackNavigator(
     Ranking: {
       screen: Ranking,
     },
+    RankingAll: {
+      screen: RankingAll,
+    },
+    RankingPattern: {
+      screen: RankingPattern,
+    },
+    Questions: {
+      screen: Questions,
+    }
   },
   {
     defaultNavigationOptions: {
