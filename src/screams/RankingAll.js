@@ -80,6 +80,11 @@ const RankingAll = ({ score = 2 }) => {
     </SafeAreaView>
   );
 }
+RankingAll.navigationOptions = () => {
+  return {
+    title: 'Consultar cursos',
+  };
+};
 
 
 export default RankingAll;

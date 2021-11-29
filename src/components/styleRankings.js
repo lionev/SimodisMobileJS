@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const ranking = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor:"#E0ECFF",
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -25,11 +25,11 @@ const ranking = StyleSheet.create({
         flexDirection: 'row',
     },
     text: {
-        color: 'white',
+        color: 'black',
         fontSize: 25,
     },
     userScore: {
-        color: 'white',
+        color: 'black',
         fontSize: 25,
         marginLeft: 50,
     },
