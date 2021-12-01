@@ -41,7 +41,7 @@ const Perfil = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 15,
     width: '90%',
-    backgroundColor: 'red',
+    backgroundColor: '#3485FF',
   },
   text1: {
     marginTop: 50,
