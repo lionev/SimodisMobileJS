@@ -1,9 +1,18 @@
 import {parse} from '@babel/core';
 import React, {useState} from 'react';
-import {Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import styles from '../components/stylesLogin';
 import {signin} from '../helpers/SimodisAPI';
 import {doLogin} from '../helpers/AuthHandler';
+import backgroundImg from '../imagens/background.jpg';
+
+const image = {uri: 'https://reactjs.org/logo-og.png'};
 
 const Screen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -25,38 +34,51 @@ const Screen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.logo}>Simodis</Text>
-      </View>
-      <View>
-        <TextInput
-          placeholder="exemplo@dominio.com.br"
-          style={styles.input}
-          value={email}
-          onChangeText={t => setEmail(t)}
-        />
-      </View>
-      <View style={{margin: 8}}>
-        <TextInput
-          placeholder="Password"
-          secureTextEntry={true}
-          style={styles.input}
-          value={password}
-          onChangeText={t => setPassword(t)}
-        />
-      </View>
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.opacity} onPress={handleFazerLogin}>
-          <Text style={styles.text}>Signin</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.opacity}
-          onPress={() => {
-            navigation.navigate('Signup');
-          }}>
-          <Text style={styles.text}>Signup</Text>
-        </TouchableOpacity>
-      </View>
+      <ImageBackground
+        source={backgroundImg}
+        resizeMode="cover"
+        style={styles.image}>
+        <View>
+          <View style={styles.title}>
+            <Text style={styles.name}>EDG{'\n'}Academy</Text>
+          </View>
+
+          <TextInput
+            placeholder="exemplo@dominio.com.br"
+            style={styles.input}
+            value={email}
+            onChangeText={t => setEmail(t)}
+          />
+        </View>
+        <View>
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={true}
+            style={styles.input}
+            value={password}
+            onChangeText={t => setPassword(t)}
+          />
+        </View>
+        <View style={styles.containerOpacity}>
+          <TouchableOpacity style={styles.opacity} onPress={handleFazerLogin}>
+            <Text style={styles.text}>Entrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.opacity}
+            onPress={() => {
+              navigation.navigate('Signup');
+            }}>
+            <Text style={styles.text}>Cadastrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.opacity}
+            onPress={() => {
+              navigation.navigate('ForgotPassword');
+            }}>
+            <Text style={styles.text}>Problemas com o login?</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -68,4 +90,3 @@ Screen.navigationOptions = () => {
 };
 
 export default Screen;
-

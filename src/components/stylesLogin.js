@@ -1,61 +1,50 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    
-    container:{
-        flex:1,        
-        backgroundColor:"#E0ECFF",
-        flexDirection:"row",
-        justifyContent:"center",
-        alignItems:"center",
-        alignContent:"center",
-        flexWrap:"wrap",
-    },
-
-    input:{
-        width:370,
-        height:45,
-        backgroundColor:"#FFFFFF",
-        borderRadius:5,
-        borderColor:"#CCCCCC",
-        borderWidth:1,
-        borderTopColor:"#CCCCCC",
-        fontSize:15,
-        fontWeight:"bold",
-        color:"#000",
-        padding:9,
-    },
-
-    logo:{
-        fontSize:35,
-        textAlign:"center",
-        marginBottom:40,
-        fontWeight:"bold"
-    },
-
-    opacity:{        
-        backgroundColor:"#3485FF",
-        height:40,
-        width:150,
-        marginTop:1,
-        margin:35,
-        marginBottom:-60,
-        padding:9,
-        borderWidth:1,
-        borderRadius:5,
-        borderColor:"#FFF",
-        alignItems:"center",
-        justifyContent:"center",
-        flexWrap: "wrap"
-
-    },
-
-    text:{
-        fontSize:15,
-        color:"#FFF",        
-        marginTop:-3,
-        marginLeft: 80
-    }
+  container: {
+    flex: 1,
+  },
+  title: {
+    marginBottom: 40,
+    marginLeft: 75,
+  },
+  name: {
+    fontSize: 50,
+    color: '#0D114F',
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+    alignItems: 'center',
+  },
+  input: {
+    width: 350,
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 13,
+    backgroundColor: '#f8f8ff',
+  },
+  opacity: {
+    width: 350,
+    backgroundColor: 'blue',
+    marginVertical: 2,
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  opacity1: {
+    width: 350,
+    marginVertical: 2,
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  text: {
+    color: 'white',
+  },
+  text1: {
+    color: 'blue',
+  },
 });
-
-  export default styles;
+export default styles;

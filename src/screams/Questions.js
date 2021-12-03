@@ -50,7 +50,6 @@ const Questions = ({questionsExample}) => {
   }, [currentIndex])
 
   return (
-    
       <View style={question.container}>
         <View style={question.content}>
           <View style={question.header}>
@@ -75,7 +74,6 @@ const Questions = ({questionsExample}) => {
           <Text style={question.nextText}>Proxima Pergunta</Text>
         </TouchableOpacity>
       </View>
-    
   )
 }
 
