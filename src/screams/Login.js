@@ -11,6 +11,7 @@ import styles from '../components/stylesLogin';
 import {signin} from '../helpers/SimodisAPI';
 import {doLogin} from '../helpers/AuthHandler';
 import backgroundImg from '../imagens/background.jpg';
+import LinearGradient from 'react-native-linear-gradient';
 
 const image = {uri: 'https://reactjs.org/logo-og.png'};
 
@@ -60,22 +61,34 @@ const Screen = ({navigation}) => {
           />
         </View>
         <View style={styles.containerOpacity}>
-          <TouchableOpacity style={styles.opacity} onPress={handleFazerLogin}>
-            <Text style={styles.text}>Entrar</Text>
+          <TouchableOpacity onPress={handleFazerLogin}>
+            <LinearGradient
+              style={styles.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>Entrar</Text>
+            </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.opacity}
             onPress={() => {
               navigation.navigate('Signup');
             }}>
-            <Text style={styles.text}>Cadastrar</Text>
+            <LinearGradient
+              style={styles.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>Cadastrar</Text>
+            </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.opacity}
             onPress={() => {
               navigation.navigate('ForgotPassword');
             }}>
-            <Text style={styles.text}>Problemas com o login?</Text>
+            <LinearGradient
+              style={styles.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>
+                Esqueceu a senha?
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </ImageBackground>

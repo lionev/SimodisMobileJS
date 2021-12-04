@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 50,
-    color: '#0D114F',
+    color: '#1e90ff',
   },
   image: {
     flex: 1,
@@ -25,26 +25,13 @@ const styles = StyleSheet.create({
     marginBottom: 13,
     backgroundColor: '#f8f8ff',
   },
-  opacity: {
+  LinearGradient: {
     width: 350,
-    backgroundColor: 'blue',
-    marginVertical: 2,
-    padding: 10,
+    height: 50,
     borderRadius: 8,
     alignItems: 'center',
-  },
-  opacity1: {
-    width: 350,
+    justifyContent: 'center',
     marginVertical: 2,
-    padding: 10,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  text: {
-    color: 'white',
-  },
-  text1: {
-    color: 'blue',
   },
 });
 export default styles;

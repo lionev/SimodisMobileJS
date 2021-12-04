@@ -3,56 +3,52 @@ import {StyleSheet} from 'react-native';
 const Perfil = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E0ECFF',
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
     alignItems: 'center',
   },
-
   header: {
     width: 120,
     height: 120,
-    borderRadius: 75,
-    marginTop: 20,
+    marginBottom: -30,
   },
-
-  image: {
+  iconImage: {
     width: 120,
     height: 120,
     borderRadius: 75,
   },
-
-  body2: {
+  LinearGradientBody: {
     width: 380,
     height: 350,
-    backgroundColor: '#E0ECFF',
     marginTop: 30,
-    borderWidth: 5,
-    borderColor: '#FFF',
-  },
-
-  body1: {
-    width: 380,
-    height: 150,
-    backgroundColor: '#E0ECFF',
-    marginTop: 30,
-    borderWidth: 5,
-    borderColor: '#FFF',
+    borderRadius: 8,
   },
   picker: {
-    marginTop: 10,
+    marginTop: 20,
     marginHorizontal: 15,
     width: '90%',
     backgroundColor: '#3485FF',
+    borderRadius: 8,
   },
   text1: {
     marginTop: 50,
     marginLeft: 130,
     fontSize: 30,
   },
-
   text: {
-    fontSize: 18,
+    fontSize: 20,
     marginTop: 10,
     marginLeft: 10,
+  },
+  nota: {
+    marginTop: 40,
+    marginLeft: 145,
+  },
+  notaText: {
+    fontSize: 30,
   },
 });
 

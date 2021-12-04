@@ -3,8 +3,11 @@ import {StyleSheet} from 'react-native';
 const rankingMain = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E0ECFF',
+  },
+  image: {
+    flex: 1,
     justifyContent: 'center',
+    width: '100%',
     alignItems: 'center',
   },
   title: {
@@ -22,6 +25,14 @@ const rankingMain = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 20,
+  },
+  LinearGradient: {
+    width: 300,
+    height: 80,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
   },
 });
 

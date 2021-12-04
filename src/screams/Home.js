@@ -1,35 +1,52 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, Button} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  Button,
+  ImageBackground,
+} from 'react-native';
 import home from '../components/styleHome';
+import backgroundImg from '../imagens/backgroundHome.jpg';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Home = ({navigation}) => {
   return (
     <View style={home.container}>
-      <View style={home.semicirculoTop}></View>
-      <View style={home.area}>
-        <TouchableOpacity
-          style={home.buttonHome}
-          onPress={() => {
-            navigation.navigate('ListarProdutos');
-          }}>
-          <Text style={{fontSize: 20, color: '#FFF'}}>Cursos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={home.buttonHome}
-          onPress={() => {
-            navigation.navigate('Ranking');
-          }}>
-          <Text style={{fontSize: 20, color: '#FFF'}}>Ranking</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={home.buttonHome}
-          onPress={() => {
-            navigation.navigate('Questions');
-          }}>
-          <Text style={{fontSize: 20, color: '#FFF'}}>Atividades</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={home.semicirculoBotton}></View>
+      <ImageBackground source={backgroundImg} style={home.image}>
+        <View style={home.area}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ListarProdutos');
+            }}>
+            <LinearGradient
+              style={home.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>Cursos</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Ranking');
+            }}>
+            <LinearGradient
+              style={home.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>Ranking</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Questions');
+            }}>
+            <LinearGradient
+              style={home.LinearGradient}
+              colors={['#1e90ff', '#00bfff']}>
+              <Text style={{fontSize: 20, color: '#FFF'}}>Atividades</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
