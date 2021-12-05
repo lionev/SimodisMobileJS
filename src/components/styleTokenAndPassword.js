@@ -16,6 +16,16 @@ const styles = StyleSheet.create({
     marginTop: -20,
     marginHorizontal: 20,
   },
+  input1: {
+    width: 350,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: '#f8f8ff',
+    borderColor: 'black',
+    borderWidth: 0.8,
+    marginTop: 5,
+    marginHorizontal: 20,
+  },
   contentText: {
     marginHorizontal: 20,
   },

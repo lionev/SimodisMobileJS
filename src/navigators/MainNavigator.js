@@ -10,6 +10,7 @@ import RankingAll from '../screams/RankingAll';
 import RankingPattern from '../screams/RankingPattern';
 import Questions from '../screams/Questions';
 import ForgotPassword from '../screams/ForgotPassword';
+import TokenAndNewPassword from '../screams/TokenAndNewPassword';
 
 const MainNavigator = createStackNavigator(
   {
@@ -45,6 +46,9 @@ const MainNavigator = createStackNavigator(
     },
     ForgotPassword: {
       screen: ForgotPassword,
+    },
+    TokenAndNewPassword: {
+      screen: TokenAndNewPassword,
     },
   },
   {
