@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '80%',
-    marginTop: 50,
   },
   buttonNext: {
     width: 350,

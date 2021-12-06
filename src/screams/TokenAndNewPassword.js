@@ -10,10 +10,25 @@ import {
 import backgroundImg from '../imagens/Val1.png';
 import styles from '../components/styleTokenAndPassword';
 import LinearGradient from 'react-native-linear-gradient';
+import {altPassword} from '../helpers/SimodisAPI';
 
 const TokenAndNewPassword = ({navigation}) => {
-  const [email, setEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [token, setToken] = useState('');
+
+  const handlePassword = async () => {
+    if (token !== '' && newPassword !== '') {
+      const json = await altPassword(token, newPassword);
+      if (json.error) {
+        alert(JSON.stringify(json.error));
+        return;
+      }
+      navigation.navigate('Login');
+    } else {
+      alert('Token Invalido');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -30,13 +45,12 @@ const TokenAndNewPassword = ({navigation}) => {
           onChangeText={t => setToken(t)}
         />
         <TextInput
-          placeholder="Insira o seu email"
+          placeholder="Insira a nova senha"
           style={styles.input1}
-          value={email}
-          onChangeText={t => setEmail(t)}
+          value={newPassword}
+          onChangeText={t => setNewPassword(t)}
         />
-        <TouchableOpacity
-          onPress={() => navigation.navigate('TokenAndNewPassword')}>
+        <TouchableOpacity onPress={handlePassword}>
           <LinearGradient
             style={styles.buttonNext}
             colors={['#1e90ff', '#00bfff']}>

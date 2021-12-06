@@ -11,8 +11,11 @@ const Screen = ({navigation}) => {
 
   const handleSignup = async () => {
     if (name !== '' && email !== '' && password !== '') {
-      const json = await signup(name, email, password);
-      if (json.token) {
+      const json = await signup(name, email, password, false);
+      if (json.error) {
+        alert(JSON.stringify(json.error));
+        return;
+      } else {
         doLogin(json.token);
         navigation.navigate('Home');
       }
