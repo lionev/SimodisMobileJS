@@ -60,6 +60,8 @@ const MainNavigator = createStackNavigator(
       headerTitleStyle: {
         fontSize: 25,
         color: 'black',
+        textAlign: 'center',
+        marginLeft: -60,
       },
       headerTintColor: 'black',
     },

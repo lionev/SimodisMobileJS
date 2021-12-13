@@ -1,8 +1,17 @@
 import React, {useState} from 'react';
-import {Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import styles from '../components/styleCadastro';
 import {signup} from '../helpers/SimodisAPI';
 import {doLogin} from '../helpers/AuthHandler';
+import backgroundImg from '../imagens/backgroundCadastro.png';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Screen = ({navigation}) => {
   const [name, setName] = useState('');
@@ -17,7 +26,7 @@ const Screen = ({navigation}) => {
         return;
       } else {
         doLogin(json.token);
-        navigation.navigate('Home');
+        navigation.navigate('Login');
       }
 
       setName('');
@@ -35,52 +44,59 @@ const Screen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text
-          style={{
-            fontSize: 23,
-            color: '#000',
-            marginTop: 20,
-            marginBottom: 20,
-            fontWeight: 'bold',
-          }}>
-          Cadastro Usuário
-        </Text>
-        <TextInput
-          placeholder="Name"
-          style={styles.input}
-          value={name}
-          onChangeText={t => setName(t)}
-        />
+    <SafeAreaView style={styles.container}>
+      <ImageBackground source={backgroundImg} style={styles.image}>
+        <View style={styles.header}></View>
+      </ImageBackground>
+      <View style={styles.content}>
+        <View style={styles.input}>
+          <TextInput
+            placeholder="Nome"
+            style={{marginLeft: 10}}
+            value={name}
+            onChangeText={t => setName(t)}
+          />
+        </View>
+        <View style={styles.input}>
+          <TextInput
+            placeholder="Email"
+            style={{marginLeft: 10}}
+            value={email}
+            onChangeText={t => setEmail(t)}
+          />
+        </View>
+        <View style={styles.input}>
+          <TextInput
+            placeholder="Senha"
+            style={{marginLeft: 10}}
+            value={password}
+            onChangeText={t => setPassword(t)}
+          />
+        </View>
       </View>
-      <View style={{margin: 8}}>
-        <TextInput
-          placeholder="exemplo@dominio.com.br"
-          style={styles.input}
-          value={email}
-          onChangeText={t => setEmail(t)}
-        />
-      </View>
-      <View>
-        <TextInput
-          placeholder="Password"
-          secureTextEntry={true}
-          style={styles.input}
-          value={password}
-          onChangeText={t => setPassword(t)}
-        />
-      </View>
-      <View style={{flexDirection: 'row', padding: 10}}>
-        <TouchableOpacity style={styles.opacity} onPress={handleSignup}>
-          <Text style={styles.text}>Enviar</Text>
+      <View style={styles.button}>
+        <TouchableOpacity onPress={handleSignup}>
+          <LinearGradient
+            style={styles.LinearGradient}
+            colors={['#1e90ff', '#00bfff']}>
+            <Text style={{fontSize: 20, color: '#FFF'}}>Cadastrar</Text>
+          </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.opacity} onPress={handleLimpar}>
-          <Text style={styles.text}>Cancelar</Text>
+        <TouchableOpacity onPress={handleLimpar}>
+          <LinearGradient
+            style={styles.LinearGradient}
+            colors={['#1e90ff', '#00bfff']}>
+            <Text style={{fontSize: 20, color: '#FFF'}}>Voltar</Text>
+          </LinearGradient>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
+};
+Screen.navigationOptions = () => {
+  return {
+    title: 'Cadastro',
+  };
 };
 
 export default Screen;

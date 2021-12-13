@@ -12,8 +12,6 @@ import {doLogin} from '../helpers/AuthHandler';
 import backgroundImg from '../imagens/background.jpg';
 import LinearGradient from 'react-native-linear-gradient';
 
-const image = {uri: 'https://reactjs.org/logo-og.png'};
-
 const Screen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,7 +38,7 @@ const Screen = ({navigation}) => {
         style={styles.image}>
         <View>
           <View style={styles.title}>
-            <Text style={styles.name}>EDG{'\n'}Academy</Text>
+            <Text style={styles.name}>Simodes</Text>
           </View>
 
           <TextInput
@@ -97,6 +95,7 @@ const Screen = ({navigation}) => {
 
 Screen.navigationOptions = () => {
   return {
+    headerShow: false,
     title: 'Login',
   };
 };

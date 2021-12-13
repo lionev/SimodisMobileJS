@@ -1,80 +1,121 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { RadioButton } from 'react-native-paper';
+import React, {useEffect, useState, useCallBack} from 'react';
+import {Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import {RadioButton} from 'react-native-paper';
+import {getQuestions} from '../helpers/SimodisAPI';
+import backgroundImg from '../imagens/backgroundQuestions.png';
+import LinearGradient from 'react-native-linear-gradient';
 
-import question from '../components/styleQuestions'
+import questions from '../components/styleQuestions';
 
-const INITIAL_QUESTIONS_STATE = [
-  {
-    question: '1. lorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem orem ipsum dolor sit amet, con orem ipsum dolor sit amet, co orem ipsum dolor sit amet, co orem ipsum dolor sit amet, co',
-    alternatives: [
-      { text: 'One1' },
-      { text: 'One2' },
-      { text: 'One3' },
-      { text: 'One4' },
-      { text: 'One5' },
-    ]
-  },
-  {
-    question: '2. lorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem ipsum dolor sit amet, conlorem orem ipsum dolor sit amet, con orem ipsum dolor sit amet, co orem ipsum dolor sit amet, co orem ipsum dolor sit amet, co',
-    alternatives: [
-      { text: 'Two1' },
-      { text: 'Two2' },
-      { text: 'Two3' },
-      { text: 'Two4' },
-      { text: 'Two5' },
-    ]
-  }
-]
-
-const Questions = ({questionsExample}) => {
-  const [value, setValue] = React.useState('');
-  const [questions, setQuestions] = useState(INITIAL_QUESTIONS_STATE) // questionsExample (Quando vir do banco)
-  const [currentQuestion, setCurrentQuestion] = useState()
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  console.log(currentQuestion)
-
+const Questions = ({navigation}) => {
+  const [selectValue, setSelectValue] = React.useState('');
+  const [selectAnswers, setSelectAnswers] = React.useState([]);
+  const [questoes, setQuestoes] = useState([]); // questionsExample (Quando vir do banco)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [title, setTitle] = useState('Proxima pergunta');
 
   const nextQuestion = () => {
-    if(currentIndex > questions.length) {
-      console.warn('parabens, terminou')
-      return
+    if (currentIndex < questoes.length - 1) {
+      saveAnswer();
+      setCurrentIndex(currentIndex + 1);
+      return;
     }
-    setCurrentIndex(currentIndex + 1)
-  }
+    if (currentIndex >= questoes.length - 1) {
+      sendAnswers();
+      return;
+    }
+  };
+
+  const sendAnswers = () => {
+    // enviar selectAnswers
+  };
 
   useEffect(() => {
-      const element = questions[currentIndex]
-      setCurrentQuestion(element)
-  }, [currentIndex])
+    const getQuestion = async () => {
+      const fetchQuestions = await getQuestions(navigation.state.params.id);
+      setQuestoes(fetchQuestions);
+    };
+    getQuestion();
+  }, []);
+
+  useEffect(() => {
+    if (currentIndex === questoes.length - 1) {
+      setTitle('Salvar');
+      navigation.navigate('ListarProdutos');
+    }
+  }, [currentIndex, questoes]);
+
+  const saveAnswer = () => {
+    if (selectValue) {
+      setSelectAnswers(prevValues => [...prevValues, selectValue]);
+    }
+  };
 
   return (
-      <View style={question.container}>
-        <View style={question.content}>
-          <View style={question.header}>
-            <Text style={question.title}>Pergunta 1</Text>
-
-            <Text style={question.questions}>{currentQuestion?.question}</Text>
-          </View>
-          <View style={question.radiButton}>
-            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
-              {currentQuestion?.alternatives.map((alternative, index) => {
+    <View style={questions.container}>
+      <ImageBackground source={backgroundImg} style={questions.image}>
+        <View style={questions.content}>
+          <View style={questions.header}>
+            {questoes.map((alternative, index) => {
+              if (index === currentIndex) {
                 return (
-                  <View style={question.button} key={`${index}`}>
-                    <RadioButton value={alternative} />
-                    <Text style={question.ButtonText}>{alternative.text}</Text>
+                  <View key={index} style={questions.questions}>
+                    <Text style={questions.textQuestions}>
+                      {alternative.question}
+                    </Text>
                   </View>
-                )
+                );
+              }
+            })}
+          </View>
+          <View style={questions.radiButton}>
+            <RadioButton.Group
+              onValueChange={newValue => setSelectValue(newValue)}
+              value={selectValue}>
+              {questoes.map((alternative, index) => {
+                if (index == currentIndex)
+                  return (
+                    <View key={index} style={questions.quests}>
+                      {alternative.answers.map((answer, index) => {
+                        return (
+                          <View key={index} style={questions.quest}>
+                            {answer.answer_false ? (
+                              <>
+                                <RadioButton value={answer.id} />
+                                <Text style={questions.ButtonText}>
+                                  {answer.answer_false}
+                                </Text>
+                              </>
+                            ) : answer.answer_true ? (
+                              <>
+                                <RadioButton value={answer.id} />
+                                <Text style={questions.ButtonText}>
+                                  {answer.answer_true}
+                                </Text>
+                              </>
+                            ) : null}
+                          </View>
+                        );
+                      })}
+                    </View>
+                  );
               })}
             </RadioButton.Group>
           </View>
         </View>
-        <TouchableOpacity style={question.nextQuestion} onPress={nextQuestion}>
-          <Text style={question.nextText}>Proxima Pergunta</Text>
+        <TouchableOpacity onPress={nextQuestion} disabled={!selectValue}>
+          <LinearGradient
+            style={questions.LinearGradient}
+            colors={!!selectValue ? ['#1e90ff', '#00bfff'] : ['#000', '#000']}>
+            <Text
+              style={{fontSize: 20, color: !!selectValue ? '#000' : '#FFF'}}>
+              {title}
+            </Text>
+          </LinearGradient>
         </TouchableOpacity>
-      </View>
-  )
-}
+      </ImageBackground>
+    </View>
+  );
+};
 
 export default Questions;

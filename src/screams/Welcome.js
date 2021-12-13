@@ -35,6 +35,7 @@ const Screen = ({navigation}) => {
 Screen.navigationOptions = () => {
   return {
     title: 'EDG Academy',
+    marginLeft: 50,
   };
 };
 

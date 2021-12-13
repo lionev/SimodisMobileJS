@@ -1,20 +1,20 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList,Text, } from 'react-native';
+import {SafeAreaView, View, FlatList, Text} from 'react-native';
 
-import ranking from '../components/styleRankings'
+import ranking from '../components/styleRankings';
 
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     position: '1',
     title: 'Matheus',
-    score: '70'
+    score: '70',
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     position: '2',
     title: 'Julio',
-    score: '60'
+    score: '60',
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
@@ -46,10 +46,9 @@ const DATA = [
     title: 'Ivonaldo',
     score: '10',
   },
-
 ];
 
-const Item = ({ title, score, position }) => (
+const Item = ({title, score, position}) => (
   <View style={ranking.item}>
     <Text style={ranking.position}>{position}</Text>
     <Text style={ranking.title}>{title}</Text>
@@ -57,16 +56,17 @@ const Item = ({ title, score, position }) => (
   </View>
 );
 
-const RankingPattern = ({ score = 2 }) => {
-  const renderItem = ({ item }) => (
+const RankingPattern = ({score = 2}) => {
+  const renderItem = ({item}) => (
     <Item title={item.title} score={item.score} position={item.position} />
   );
 
   return (
     <SafeAreaView style={ranking.container}>
       <View style={ranking.content}>
+        <Text style={{fontSize: 30, marginBottom: 30}}>Em construção</Text>
         <View style={ranking.userRanking}>
-          <Text style={ranking.text} >Sua posição é:</Text>
+          <Text style={ranking.text}>Sua posição é:</Text>
           <Text style={ranking.userScore}>{score}</Text>
         </View>
         <FlatList
@@ -79,7 +79,6 @@ const RankingPattern = ({ score = 2 }) => {
       </View>
     </SafeAreaView>
   );
-}
-
+};
 
 export default RankingPattern;

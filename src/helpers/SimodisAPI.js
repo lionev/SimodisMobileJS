@@ -87,3 +87,12 @@ export const altPassword = async (token, newPassword) => {
   const json = await req.json();
   return json;
 };
+
+export const getQuestions = async id_courses => {
+  const req = await fetch(
+    `https://backend-simodis.herokuapp.com/course/tasks?id_course=${id_courses}`,
+  );
+
+  const json = await req.json();
+  return json.tasks_course;
+};

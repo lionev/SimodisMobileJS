@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 50,
-    color: '#1e90ff',
+    color: 'black',
   },
   image: {
     flex: 1,

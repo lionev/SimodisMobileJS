@@ -13,6 +13,10 @@ const Screen = ({navigation}) => {
   const [cursos, setCursos] = useState([]);
   const [buscar, setBuscar] = useState('');
 
+  const handleQuestions = id => {
+    navigation.navigate('Questions', {id: id});
+  };
+
   useEffect(() => {
     const getCoursers = async () => {
       const json = await listcourse();
@@ -46,7 +50,7 @@ const Screen = ({navigation}) => {
             return (
               <View style={styles.areaCurso}>
                 <TouchableHighlight
-                  onPress={() => {}}
+                  onPress={() => handleQuestions(item.id)}
                   underlayColor="#CCCCCC"
                   activeOpacity={0.8}>
                   <View>
