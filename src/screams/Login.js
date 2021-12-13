@@ -95,8 +95,7 @@ const Screen = ({navigation}) => {
 
 Screen.navigationOptions = () => {
   return {
-    headerShow: false,
-    title: 'Login',
+    title: 'Entrar',
   };
 };
 

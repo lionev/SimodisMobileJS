@@ -35,16 +35,6 @@ const Home = ({navigation}) => {
               <Text style={{fontSize: 20, color: '#FFF'}}>Ranking</Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Questions');
-            }}>
-            <LinearGradient
-              style={home.LinearGradient}
-              colors={['#1e90ff', '#00bfff']}>
-              <Text style={{fontSize: 20, color: '#FFF'}}>Atividades</Text>
-            </LinearGradient>
-          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
@@ -53,6 +43,7 @@ const Home = ({navigation}) => {
 
 Home.navigationOptions = ({navigation}) => {
   return {
+    title: 'Menu Principal',
     headerRight: () => (
       <Button title="Perfil" onPress={() => navigation.navigate('Perfil')} />
     ),

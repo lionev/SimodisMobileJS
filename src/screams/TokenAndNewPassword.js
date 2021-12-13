@@ -47,6 +47,7 @@ const TokenAndNewPassword = ({navigation}) => {
         <TextInput
           placeholder="Insira a nova senha"
           style={styles.input1}
+          secureTextEntry={true}
           value={newPassword}
           onChangeText={t => setNewPassword(t)}
         />
@@ -60,6 +61,12 @@ const TokenAndNewPassword = ({navigation}) => {
       </ImageBackground>
     </View>
   );
+};
+
+TokenAndNewPassword.navigationOptions = () => {
+  return {
+    title: 'Recuperar Senha',
+  };
 };
 
 export default TokenAndNewPassword;

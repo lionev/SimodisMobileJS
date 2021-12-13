@@ -55,4 +55,10 @@ const ForgotPassword = ({navigation}) => {
   );
 };
 
+ForgotPassword.navigationOptions = () => {
+  return {
+    title: 'Recuperar Senha',
+  };
+};
+
 export default ForgotPassword;

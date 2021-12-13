@@ -41,7 +41,7 @@ const Questions = ({navigation}) => {
   useEffect(() => {
     if (currentIndex === questoes.length - 1) {
       setTitle('Salvar');
-      navigation.navigate('ListarProdutos');
+      navigation.navigate('Congratulations');
     }
   }, [currentIndex, questoes]);
 
@@ -116,6 +116,12 @@ const Questions = ({navigation}) => {
       </ImageBackground>
     </View>
   );
+};
+
+Questions.navigationOptions = () => {
+  return {
+    title: 'Atividades',
+  };
 };
 
 export default Questions;
